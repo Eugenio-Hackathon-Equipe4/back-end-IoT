@@ -1,0 +1,116 @@
+[
+    {
+        "id": "6a256a80.d53a54",
+        "type": "tab",
+        "label": "Back_Consumidoras",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "e62d879c.be1088",
+        "type": "inject",
+        "z": "6a256a80.d53a54",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "300",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 90,
+        "y": 60,
+        "wires": [
+            [
+                "69fc4e86.4dbff"
+            ]
+        ]
+    },
+    {
+        "id": "69fc4e86.4dbff",
+        "type": "http request",
+        "z": "6a256a80.d53a54",
+        "name": "HTTPS",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://raw.githubusercontent.com/Eugenio-Hackathon-Equipe4/database/main/Consumidoras.csv",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 240,
+        "y": 60,
+        "wires": [
+            [
+                "f0627cff.7781a"
+            ]
+        ]
+    },
+    {
+        "id": "f0627cff.7781a",
+        "type": "csv",
+        "z": "6a256a80.d53a54",
+        "name": "Doc.csv",
+        "sep": ",",
+        "hdrin": true,
+        "hdrout": "once",
+        "multi": "one",
+        "ret": "\\r\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": true,
+        "include_null_values": false,
+        "x": 400,
+        "y": 100,
+        "wires": [
+            [
+                "99c250be.da1e8"
+            ]
+        ],
+        "info": "const csvFilePath='C:\\Users\\Carlos\\Documents\\Shawee\\Consultoras.csv'\r\nconst csv=require('csvtojson')\r\ncsv()\r\n.fromFile(csvFilePath)\r\n.then((jsonObj)=>{\r\n\tconsole.log(jsonObj);\r\nconst jsonArray=await csv().fromFile(csvFilePath);"
+    },
+    {
+        "id": "3699bf5e.d8e9e",
+        "type": "debug",
+        "z": "6a256a80.d53a54",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "99c250be.da1e8",
+        "type": "json",
+        "z": "6a256a80.d53a54",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": true,
+        "x": 550,
+        "y": 100,
+        "wires": [
+            [
+                "3699bf5e.d8e9e"
+            ]
+        ]
+    }
+]

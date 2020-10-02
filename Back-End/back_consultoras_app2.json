@@ -1,0 +1,116 @@
+[
+    {
+        "id": "c989f2e6.6a6a4",
+        "type": "tab",
+        "label": "Back_Consultoras",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "d939f3f6.7385b",
+        "type": "inject",
+        "z": "c989f2e6.6a6a4",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "300",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 90,
+        "y": 60,
+        "wires": [
+            [
+                "8c1328ce.6ecde8"
+            ]
+        ]
+    },
+    {
+        "id": "8c1328ce.6ecde8",
+        "type": "http request",
+        "z": "c989f2e6.6a6a4",
+        "name": "HTTPS",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://raw.githubusercontent.com/Eugenio-Hackathon-Equipe4/database/main/Consultoras.csv",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 240,
+        "y": 60,
+        "wires": [
+            [
+                "b0f58bd.4043078"
+            ]
+        ]
+    },
+    {
+        "id": "b0f58bd.4043078",
+        "type": "csv",
+        "z": "c989f2e6.6a6a4",
+        "name": "Doc.csv",
+        "sep": ",",
+        "hdrin": true,
+        "hdrout": "once",
+        "multi": "one",
+        "ret": "\\r\\n",
+        "temp": "Qual sua relação com os produtos Natura?,Qual sua idade?,Qual seu gênero?,Tem filhos?,Qual seu estado civil?,Ser consultora Natura para você é...,\"Em uma frase o que levou você a vender Natura?\",Como você mantêm seu estoque de produtos hoje?,Como você escolhe os produtos a pronta entrega?,Quais formas de pagamento oferece aos seus clientes?,\"Para você que vende fiado, passa por algum problema?\",Qual o principal motivo de não utilizar produtos Natura?,\"Deixe seu Nome, E-mail e WhatsApp com DDD para entrarmos em contato. Obrigado!\"",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": true,
+        "include_null_values": false,
+        "x": 400,
+        "y": 100,
+        "wires": [
+            [
+                "fb3d7f2a.9a4d5"
+            ]
+        ],
+        "info": "const csvFilePath='C:\\Users\\Carlos\\Documents\\Shawee\\Consultoras.csv'\r\nconst csv=require('csvtojson')\r\ncsv()\r\n.fromFile(csvFilePath)\r\n.then((jsonObj)=>{\r\n\tconsole.log(jsonObj);\r\nconst jsonArray=await csv().fromFile(csvFilePath);"
+    },
+    {
+        "id": "82393e0a.c7e2a",
+        "type": "debug",
+        "z": "c989f2e6.6a6a4",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "fb3d7f2a.9a4d5",
+        "type": "json",
+        "z": "c989f2e6.6a6a4",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": true,
+        "x": 550,
+        "y": 100,
+        "wires": [
+            [
+                "82393e0a.c7e2a"
+            ]
+        ]
+    }
+]
