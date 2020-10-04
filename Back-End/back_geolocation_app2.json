@@ -1,0 +1,18 @@
+[
+    {
+        "id": "47fb7346.2a87fc",
+        "type": "json",
+        "z": "e3a8217c.2154a",
+        "name": "",
+        "property": "payload",
+        "action": "str",
+        "pretty": true,
+        "x": 550,
+        "y": 80,
+        "wires": [
+            [
+                "398ad80e.58ac88"
+            ]
+        ]
+    }
+]
