@@ -1,5 +1,102 @@
 [
     {
+        "id": "e3a8217c.2154a",
+        "type": "tab",
+        "label": "Back_Geolocalition",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "10525bc6.89da94",
+        "type": "inject",
+        "z": "e3a8217c.2154a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "300",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 90,
+        "y": 40,
+        "wires": [
+            [
+                "e38b4474.88a7f8"
+            ]
+        ]
+    },
+    {
+        "id": "e38b4474.88a7f8",
+        "type": "http request",
+        "z": "e3a8217c.2154a",
+        "name": "HTTPS",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://raw.githubusercontent.com/Eugenio-Hackathon-Equipe4/database/main/locais_lojas.csv",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 240,
+        "y": 40,
+        "wires": [
+            [
+                "dcc8985e.4733d8"
+            ]
+        ]
+    },
+    {
+        "id": "dcc8985e.4733d8",
+        "type": "csv",
+        "z": "e3a8217c.2154a",
+        "name": "Doc.csv",
+        "sep": ",",
+        "hdrin": true,
+        "hdrout": "once",
+        "multi": "one",
+        "ret": "\\r\\n",
+        "temp": "Qual sua relação com os produtos Natura?,Qual sua idade?,Qual seu gênero?,Tem filhos?,Qual seu estado civil?,Ser consultora Natura para você é...,\"Em uma frase o que levou você a vender Natura?\",Como você mantêm seu estoque de produtos hoje?,Como você escolhe os produtos a pronta entrega?,Quais formas de pagamento oferece aos seus clientes?,\"Para você que vende fiado, passa por algum problema?\",Qual o principal motivo de não utilizar produtos Natura?,\"Deixe seu Nome, E-mail e WhatsApp com DDD para entrarmos em contato. Obrigado!\"",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": true,
+        "include_null_values": false,
+        "x": 400,
+        "y": 80,
+        "wires": [
+            [
+                "47fb7346.2a87fc"
+            ]
+        ]
+    },
+    {
+        "id": "398ad80e.58ac88",
+        "type": "debug",
+        "z": "e3a8217c.2154a",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 80,
+        "wires": []
+    },
+    {
         "id": "47fb7346.2a87fc",
         "type": "json",
         "z": "e3a8217c.2154a",
