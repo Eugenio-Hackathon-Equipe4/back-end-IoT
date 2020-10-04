@@ -102,7 +102,7 @@
         "z": "e3a8217c.2154a",
         "name": "",
         "property": "payload",
-        "action": "str",
+        "action": "obj",
         "pretty": true,
         "x": 550,
         "y": 80,
